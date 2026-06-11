@@ -1,11 +1,13 @@
 package com.projetologinjoaogui.entity;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -32,8 +34,8 @@ public class Estoque {
 	@NotNull
 	private int quantidade;
 	
-	@NotNull
-	@ManyToOne
-	@JoinColumn(name = "id_produto")
+	@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+	@OneToOne
+	@JoinColumn(name = "id_produto", nullable = false)
 	private Produtos produtos;
 }

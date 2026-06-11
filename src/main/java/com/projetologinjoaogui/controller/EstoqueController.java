@@ -42,7 +42,7 @@ public class EstoqueController {
 	}
 	
 	@PostMapping("/")
-	public ResponseEntity<Estoque> saveEstoque(@RequestBody Estoque estoque) {
+	public ResponseEntity<Estoque> saveEstoque(@RequestBody Estoque estoque) {		
 		Estoque saveEstoque = estoqueService.saveEstoque(estoque);
 		return ResponseEntity.status(HttpStatus.CREATED).body(saveEstoque);
 	}

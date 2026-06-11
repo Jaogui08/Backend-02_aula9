@@ -1,9 +1,11 @@
 package com.projetologinjoaogui.entity;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -33,10 +35,13 @@ public class Produtos {
 	private String descricao;
 	
 	@NotNull
-	private double preco;
+	private Double preco;
 	
 	@NotNull
 	@NotBlank
 	@Size(min = 2, max = 255)
 	private String url;
+	
+	@OneToOne(mappedBy = "produtos", cascade = CascadeType.ALL)
+	private Estoque estoque;
 }
